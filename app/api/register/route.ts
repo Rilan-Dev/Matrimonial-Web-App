@@ -124,3 +124,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 })
   }
 }
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, X-App-Client',
+    },
+  })
+}
